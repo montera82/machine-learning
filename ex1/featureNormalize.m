@@ -26,12 +26,24 @@ sigma = zeros(1, size(X, 2));
 % Hint: You might find the 'mean' and 'std' functions useful.
 %       
 
+mu = mean(X); % e.g [1 , 2]
+sigma = std(X); % same as above
 
+for i =1:size(X) 
+   X_norm(i,:) = (X(i,:) - mu ) ./ sigma
+end   
 
+% Old solution
+%for iter = 1:size(X,2) %looping through each feature represented in X
+%    fprintf('inside feature no. %f', iter);
+%    currentFeature = X(:,iter); % get the current feature
+%    mu(iter) = mean(currentFeature); % get mean of the current feature and store it
+%   sigma(iter) = std(currentFeature);
 
-
-
-
+%    for j = 1:length(currentFeature) %loop through each data item of the first feature
+%        X_norm(j, iter) = ( currentFeature(j) - mu(iter) ) / sigma(iter) ;
+%   end
+% end
 
 
 % ============================================================

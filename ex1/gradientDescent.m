@@ -19,8 +19,12 @@ for iter = 1:num_iters
 
     predictions = X * theta;
     errorsVector = predictions - y;
-
     theta = theta - (alpha/m) * (X' * errorsVector);
+
+    fprintf('%f\n', theta);
+    fprintf('\nWith above value of theta \nCost computed = %f  \n', computeCost(X, y, theta));
+    fprintf('\n Iter = %f \n', iter);
+
     % ============================================================
 
     % Save the cost J in every iteration    
