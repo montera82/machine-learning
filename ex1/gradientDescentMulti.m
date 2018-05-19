@@ -17,16 +17,12 @@ for iter = 1:num_iters
     %       of the cost function (computeCostMulti) and gradient here.
     %
 
-
-
-
-
-
-
-
-
-
-
+    predictions = X * theta;
+    errorsVector = predictions - y;
+    theta = theta - (alpha/m) * (X' * errorsVector);
+    
+    % fprintf('values of theta while gradientdecent\n')
+    % fprintf('%f\n', theta)
     % ============================================================
 
     % Save the cost J in every iteration    

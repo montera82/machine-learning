@@ -100,17 +100,51 @@ fprintf('Theta computed from gradient descent: \n');
 fprintf(' %f \n', theta);
 fprintf('\n');
 
+fprintf('Playing with several learning rates \n');
+% fprintf('%f \n',theta2);
+% Experiment with multiple values of alpha
+alpha2 = 0.03;
+alpha3 = 0.09;
+[theta2, J_history2] = gradientDescentMulti(X, y, zeros(3,1), alpha2, 50);
+[theta3, J_history3] = gradientDescentMulti(X, y, zeros(3,1), alpha3, 50);
+
+% plot values of cost function against number of iterations on the same Figures
+hold on;
+plot(1:numel(J_history2), J_history2, 'r');
+plot(1:numel(J_history3), J_history3, 'g');
+
+fprintf('Theta 2: \n');
+fprintf(' %f \n', theta2);
+fprintf('\n');
+
+fprintf('Theta 3: \n');
+fprintf(' %f \n', theta3);
+fprintf('\n');
+
 % Estimate the price of a 1650 sq-ft, 3 br house
 % ====================== YOUR CODE HERE ======================
 % Recall that the first column of X is all-ones. Thus, it does
 % not need to be normalized.
-price = 0; % You should change this
 
+DesignMatrix = [1650, 3];
+[normalised, mu, sigma] = featureNormalize(DesignMatrix);
+fprintf('%f \n', normalised);
+X = [1 normalised];
+
+price = X * theta; 
+priceWithUsingTheta2 = X * theta2;
+priceWithUsingTheta3 = X * theta3;
 
 % ============================================================
 
 fprintf(['Predicted price of a 1650 sq-ft, 3 br house ' ...
-         '(using gradient descent):\n $%f\n'], price);
+         '(using theta):\n $%f\n'], price);
+
+fprintf(['Predicted price of a 1650 sq-ft, 3 br house ' ...
+         '(using theta2):\n $%f\n'], priceWithUsingTheta2);
+
+fprintf(['Predicted price of a 1650 sq-ft, 3 br house ' ...
+         '(using theta3):\n $%f\n'], priceWithUsingTheta3);         
 
 fprintf('Program paused. Press enter to continue.\n');
 pause;
