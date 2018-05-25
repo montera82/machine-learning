@@ -14,7 +14,9 @@ J = 0;
 %               You should set J to the cost.
 
 
-    J = (1/(2*m)) * ((X * theta) - y)' * ((X * theta) - y);
+    prediction = X * theta;
+    errorsVector = prediction - y;
+    J = 1/(2*m) * errorsVector' * errorsVector;
 
     %  fprintf('Values of theta passed to cost %f \n');
     %  fprintf('%f \n', theta);
